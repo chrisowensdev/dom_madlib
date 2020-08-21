@@ -51,10 +51,18 @@ submit.addEventListener('click', (e) => {
         }
     });
     verb.forEach((item, index) => {
-        item.innerHTML = verbArray[index];
+        if (verbArray[index] === '') {
+            item.innerHTML = generateRandomWord(randomVerbs);
+        } else {
+            item.innerHTML = verbArray[index];
+        }
     });
     adj.forEach((item, index) => {
-        item.innerHTML = adjArray[index];
+        if (adjArray[index] === '') {
+            item.innerHTML = generateRandomWord(randomAdj);
+        } else {
+            item.innerHTML = adjArray[index];
+        }
     })
 })
 
@@ -73,19 +81,9 @@ random.addEventListener('click', (e) => {
     adjInput.forEach(item => {
         item.value = generateRandomWord(randomAdj);
     })
-})
-// function fillArray(inputList, array) {
-//     nodeList.forEach(item => {
-//         array.push(item.value);
-//     })
-// }
+});
 
-// function displayWord(word, array) {
-//     word.forEach((item, index) => {
-//         item.innerHTML = array[index];
-//     })
-// }
 
 function generateRandomWord(array) {
     return array[Math.floor(Math.random() * 12)]
-}
+};
